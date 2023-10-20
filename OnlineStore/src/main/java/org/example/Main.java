@@ -19,7 +19,7 @@ public class Main {
                             DisplayCart.displayCart();
                             break;
                         case 2:
-                            DisplayCart.displayCart();
+                            CheckoutRemove.displayCart();
                             break;
                         case 3:
                             System.out.println("Thank you see you later");
