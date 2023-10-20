@@ -4,13 +4,13 @@ public class StoreConstructor {
     private String sku;
     private String productName;
     private double price;
-    private String description;
+    private String department;
 
     public StoreConstructor(String sku, String productName, double price, String description) {
         this.sku = sku;
         this.productName = productName;
         this.price = price;
-        this.description = description;
+        this.department = description;
     }
 
     public String getSku() {
@@ -37,11 +37,11 @@ public class StoreConstructor {
         this.price = price;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDepartment() {
+        return department;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.department = description;
     }
 }
