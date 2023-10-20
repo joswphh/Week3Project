@@ -37,6 +37,7 @@ public class DisplayCart {
             }
 
             Scanner scanner = new Scanner(System.in);
+
             boolean valid = false;
             while (!valid) {
                 System.out.println("What would you like to do?");
@@ -47,10 +48,10 @@ public class DisplayCart {
 
                 switch (userInput) {
                     case 1:
-                        //SearchByDepartment(inventoryItems);
+                        SearchByDepartment(inventoryItems);
                         break;
                     case 2:
-                       // AddProducts(inventoryItems);
+                        //AddProducts(inventoryItems);
                         break;
                     case 3:
                         System.out.println("Going back to main menu.");
@@ -62,5 +63,60 @@ public class DisplayCart {
             System.out.println("Sorry that file was not found.");
         }
 
+
     }
-}
+
+    public static void SearchByDepartment(ArrayList<StoreConstructor> products) {
+        boolean valid = false;
+        while (!valid) {
+            System.out.println("How would you like to view the products?");
+            System.out.println("Press 1 to search by department");
+            System.out.println("Press 2 to search by product name");
+            System.out.println("Press 3 to search by product price");
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter what you would like to choose");
+            int user = scanner.nextInt();
+            scanner.nextLine();
+
+
+                switch (user) {
+                    case 1:
+                        System.out.println("Enter the department you would like to search by");
+                        String userInput1 = scanner.nextLine();
+                        for (StoreConstructor onlineStore : products) {
+                            if (onlineStore.getDepartment().equalsIgnoreCase(userInput1)) {
+                                System.out.printf("SKU: %s, ProductName: %s, Price: %.2f, Department: %s%n",
+                                        onlineStore.getSku(), onlineStore.getProductName(), onlineStore.getPrice(), onlineStore.getDepartment());
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        System.out.println("What is the name of your product?");
+                        String userInput2 = scanner.nextLine();
+                        for (StoreConstructor onlineStore2 : products) {
+                            if (onlineStore2.getProductName().equalsIgnoreCase(userInput2)) {
+                                System.out.printf("SKU: %s, ProductName: %s, Price: %.2f, Department: %s%n",
+                                        onlineStore2.getSku(), onlineStore2.getProductName(), onlineStore2.getPrice(), onlineStore2.getDepartment());
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("What is your desired price?");
+                        double userInput3 = scanner.nextDouble();
+                        for (StoreConstructor onlineStore3 : products) {
+                            if (onlineStore3.getPrice() == userInput3) {
+                                System.out.printf("SKU: %s, ProductName: %s, Price: %.2f, Department: %s%n",
+                                        onlineStore3.getSku(), onlineStore3.getProductName(), onlineStore3.getPrice(), onlineStore3.getDepartment());
+                            }
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Invalid input");
+                        break;
+                }
+            }
+        }
+    }
