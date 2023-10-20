@@ -132,11 +132,12 @@ public class DisplayCart {
 
             for (StoreConstructor addProducts : product) {
                 if (addProducts.getSku().equalsIgnoreCase(skuReader)) {
-                    fileWriter.write(addProducts.getSku() + "|" + addProducts.getProductName()
-                            + "|" + addProducts.getPrice() + "|" + addProducts.getDepartment());
+                    fileWriter.write(addProducts.getSku() + " | " + addProducts.getProductName()
+                            + " | " + addProducts.getPrice() + " | " + addProducts.getDepartment());
                 }
 
             }
+            fileWriter.close();
 
         } catch (Exception ex) {
             System.out.println("Incorrect SKU");
