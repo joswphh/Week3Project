@@ -51,7 +51,7 @@ public class DisplayCart {
                         SearchByDepartment(inventoryItems);
                         break;
                     case 2:
-                        //AddProducts(inventoryItems);
+                        addProducts(inventoryItems);
                         break;
                     case 3:
                         System.out.println("Going back to main menu.");
@@ -119,4 +119,29 @@ public class DisplayCart {
                 }
             }
         }
+
+    public static void addProducts(ArrayList<StoreConstructor> product) {
+
+        System.out.println("You are inside your cart!");
+
+        try {
+            FileWriter fileWriter = new FileWriter("src/main/resources/addedProducts.txt", true);
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("What would you like to add? (Add by SKU)");
+            String skuReader = scanner.nextLine();
+
+            for (StoreConstructor addProducts : product) {
+                if (addProducts.getSku().equalsIgnoreCase(skuReader)) {
+                    fileWriter.write(addProducts.getSku() + "|" + addProducts.getProductName()
+                            + "|" + addProducts.getPrice() + "|" + addProducts.getDepartment());
+                }
+
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Incorrect SKU");
+
+        }
+        System.out.println("You have imported your items to your cart successfully ");
     }
+}
