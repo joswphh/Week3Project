@@ -57,6 +57,8 @@ public class DisplayCart {
                         System.out.println("Going back to main menu.");
                         valid = true;
                         break;
+                    default:
+                        System.out.println("Please enter a number 1,2 or 3 ");
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -75,8 +77,9 @@ public class DisplayCart {
             System.out.println("Press 3 to search by product price");
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter what you would like to choose");
-            int user = scanner.nextInt();
-            scanner.nextLine();
+            if (scanner.hasNextInt()) {
+                int user = scanner.nextInt();
+                scanner.nextLine();
 
 
                 switch (user) {
@@ -114,10 +117,14 @@ public class DisplayCart {
                         break;
 
                     default:
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input. Please enter a number 1,2, or 3");
                         break;
                 }
             }
+            else{
+                System.out.println("Please enter valid input.");
+            }
+        }
         }
 
     public static void addProducts(ArrayList<StoreConstructor> product) {
@@ -133,7 +140,7 @@ public class DisplayCart {
             for (StoreConstructor addProducts : product) {
                 if (addProducts.getSku().equalsIgnoreCase(skuReader)) {
                     fileWriter.write(addProducts.getSku() + " | " + addProducts.getProductName()
-                            + " | " + addProducts.getPrice() + " | " + addProducts.getDepartment());
+                            + " | " + addProducts.getPrice() + " | " + addProducts.getDepartment() + "\n");
                 }
 
             }
